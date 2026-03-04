@@ -1,0 +1,158 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: #0A2540;
+  background: #FFFFFF;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    color: #F8FAFC;
+    background: #020617;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/70 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 dark:border-slate-700/50 shadow-xl;
+  }
+
+  .gradient-bg {
+    background: linear-gradient(135deg, #0A2540 0%, #6D28D9 100%);
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #0A2540 0%, #6D28D9 100%);
+  }
+}
+
+/* Scroll-triggered animations: elements start invisible, animate when .in-view is added */
+.animate-on-scroll {
+  opacity: 0;
+  will-change: opacity, transform;
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+.animate-on-scroll.in-view {
+  opacity: 1;
+  transform: none;
+}
+
+/* Direction variants — set starting position */
+.animate-fade-up { transform: translateY(20px); }
+.animate-fade-up-lg { transform: translateY(30px); }
+.animate-fade-left { transform: translateX(-20px); }
+.animate-fade-right { transform: translateX(20px); }
+.animate-scale-in { transform: scale(0.9); opacity: 0; }
+.animate-slide-down { transform: translateY(-100%); }
+
+/* Mount animations (Hero — play immediately on load) */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes slideDown {
+  from { transform: translateY(-100%); }
+  to { transform: none; }
+}
+@keyframes fadeRight {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes fadeLeft {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: none; }
+}
+
+.anim-fade-up { animation: fadeUp 0.6s ease both; }
+.anim-fade-in { animation: fadeIn 0.6s ease both; }
+.anim-scale-in { animation: scaleIn 0.6s ease both; }
+.anim-slide-down { animation: slideDown 0.5s ease both; }
+.anim-fade-right { animation: fadeRight 0.6s ease both; }
+.anim-fade-left { animation: fadeLeft 0.6s ease both; }
+
+/* Tab content transitions */
+.tab-content {
+  animation: tabFadeIn 0.25s ease both;
+}
+@keyframes tabFadeIn {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Collapsible sections */
+.collapsible {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition: grid-template-rows 0.2s ease, opacity 0.2s ease;
+}
+.collapsible.open {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+.collapsible > div {
+  overflow: hidden;
+}
+
+/* Delay utilities */
+@layer utilities {
+  .delay-0 { animation-delay: 0ms; transition-delay: 0ms; }
+  .delay-100 { animation-delay: 100ms; transition-delay: 100ms; }
+  .delay-150 { animation-delay: 150ms; transition-delay: 150ms; }
+  .delay-200 { animation-delay: 200ms; transition-delay: 200ms; }
+  .delay-300 { animation-delay: 300ms; transition-delay: 300ms; }
+  .delay-400 { animation-delay: 400ms; transition-delay: 400ms; }
+  .delay-500 { animation-delay: 500ms; transition-delay: 500ms; }
+  .delay-600 { animation-delay: 600ms; transition-delay: 600ms; }
+  .delay-700 { animation-delay: 700ms; transition-delay: 700ms; }
+  .delay-800 { animation-delay: 800ms; transition-delay: 800ms; }
+  .delay-900 { animation-delay: 900ms; transition-delay: 900ms; }
+  .delay-1000 { animation-delay: 1000ms; transition-delay: 1000ms; }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F8FAFC;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #64748B;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #0A2540;
+}
+
+@media (prefers-color-scheme: dark) {
+  ::-webkit-scrollbar-track {
+    background: #1e293b;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #475569;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #64748b;
+  }
+}
