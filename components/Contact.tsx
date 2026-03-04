@@ -77,7 +77,7 @@ export default function Contact() {
               </div>
               <div>
                 <p className="text-sm text-dark-gray dark:text-gray-500">{t('contact.emailLabel')}</p>
-                <p className="font-semibold text-primary-navy dark:text-white">evanwainscott@gmail.com</p>
+                <p className="font-semibold text-primary-navy dark:text-white">contactus@vurso.io</p>
               </div>
             </div>
 

@@ -1,14 +1,13 @@
 'use client'
 
-import { Facebook, Twitter, Linkedin, Instagram } from 'lucide-react'
+import { Facebook, Twitter, Instagram } from 'lucide-react'
 import { useTranslation } from '@/lib/i18n/useTranslation'
 import { useInView } from '@/lib/useInView'
 
 const socialLinks = [
-  { icon: Facebook, href: '#', label: 'Facebook' },
-  { icon: Twitter, href: '#', label: 'Twitter' },
-  { icon: Linkedin, href: '#', label: 'LinkedIn' },
-  { icon: Instagram, href: '#', label: 'Instagram' },
+  { icon: Facebook, href: 'https://www.facebook.com/profile.php?id=61587803743451', label: 'Facebook' },
+  { icon: Twitter, href: 'https://x.com/vursollc', label: 'Twitter' },
+  { icon: Instagram, href: 'https://www.instagram.com/vursollc', label: 'Instagram' },
 ]
 
 const columnDelayClasses = ['delay-0', 'delay-100', 'delay-200', 'delay-300']
@@ -97,7 +96,7 @@ export default function Footer() {
             <h3 className="font-semibold mb-4">{t('footer.contactHeading')}</h3>
             <div className="space-y-2 text-white/70">
               <p>317-778-7499</p>
-              <p>evanwainscott@gmail.com</p>
+              <p>contactus@vurso.io</p>
             </div>
 
             {/* Social Links */}
