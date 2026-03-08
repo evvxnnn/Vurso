@@ -87,9 +87,9 @@ export default function Ten57Demo() {
         <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="https://durable.sfo3.cdn.digitaloceanspaces.com/blocks/34hzDNUa6NMkPbG9irLyXmvgwhBw20neZubJwtUGM8WeS46U54nYe0eb0FvjmVDr.png"
+            src="/demos/ten57/logo-nav.png"
             alt="TEN57 MUSIC"
-            className="h-10 w-auto"
+            className="h-14 w-auto"
           />
           <ul className="hidden md:flex items-center gap-8 text-sm tracking-widest uppercase">
             {NAV_LINKS.map((l) => (
