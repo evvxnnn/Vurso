@@ -123,9 +123,9 @@ export default function Ten57Demo() {
         <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="https://durable.sfo3.cdn.digitaloceanspaces.com/blocks/34hzDNUa6NMkPbG9irLyXmvgwhBw20neZubJwtUGM8WeS46U54nYe0eb0FvjmVDr.png"
+            src="/demos/ten57/logo-nav.png"
             alt="TEN57 MUSIC"
-            className="h-24 md:h-32 w-auto mx-auto mb-8"
+            className="h-28 md:h-40 w-auto mx-auto mb-8"
           />
           <p className="text-lg md:text-2xl text-zinc-300 mb-4 tracking-wide">
             Soundtrack to the Future
@@ -254,6 +254,14 @@ export default function Ten57Demo() {
               </div>
             ))}
           </div>
+          <div className="text-center mt-12">
+            <a
+              href="/demos/ten57/roster"
+              className="inline-block px-8 py-3 border border-zinc-700 hover:border-red-600 text-zinc-300 hover:text-white font-semibold tracking-wider uppercase text-sm rounded transition-colors"
+            >
+              See Full Roster
+            </a>
+          </div>
         </div>
       </section>
 
@@ -266,28 +274,22 @@ export default function Ten57Demo() {
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
             Latest releases.
           </h2>
-          {/* Spotify embed placeholder */}
-          <div className="grid md:grid-cols-2 gap-6">
-            {[1, 2, 3, 4].map((n) => (
-              <div
-                key={n}
-                className="flex items-center gap-4 border border-zinc-800 rounded-lg p-4 hover:border-red-600/50 transition-colors"
-              >
-                <div className="w-16 h-16 rounded bg-zinc-900 flex-shrink-0 flex items-center justify-center">
-                  <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6 text-red-500">
-                    <path d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
-                  </svg>
-                </div>
-                <div className="min-w-0">
-                  <p className="font-semibold truncate">Track Title {n}</p>
-                  <p className="text-zinc-500 text-sm">Artist Name</p>
-                </div>
-                <span className="ml-auto text-zinc-600 text-sm">3:45</span>
-              </div>
-            ))}
+          {/* Spotify playlist embed — replace the playlist ID below with the real one */}
+          <div className="rounded-lg overflow-hidden border border-zinc-800">
+            <iframe
+              style={{ borderRadius: '12px' }}
+              src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M?utm_source=generator&theme=0"
+              width="100%"
+              height="480"
+              frameBorder="0"
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              loading="lazy"
+              title="TEN57 Music Playlist"
+            />
           </div>
-          <p className="text-center text-zinc-600 text-sm mt-8">
-            Spotify / Apple Music embeds can be placed here for real tracks.
+          <p className="text-center text-zinc-600 text-sm mt-4">
+            Swap the playlist ID above with TEN57&apos;s own Spotify playlist.
+            New releases added to the playlist appear at the top automatically.
           </p>
         </div>
       </section>
@@ -344,7 +346,7 @@ export default function Ten57Demo() {
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="https://durable.sfo3.cdn.digitaloceanspaces.com/blocks/34hzDNUa6NMkPbG9irLyXmvgwhBw20neZubJwtUGM8WeS46U54nYe0eb0FvjmVDr.png"
+            src="/demos/ten57/logo-nav.png"
             alt="TEN57 MUSIC"
             className="h-8 w-auto opacity-60"
           />
