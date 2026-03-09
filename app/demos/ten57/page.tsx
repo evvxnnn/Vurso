@@ -10,6 +10,7 @@ const NAV_LINKS = [
   { label: 'About', href: '#about' },
   { label: 'Roster', href: '#roster' },
   { label: 'Listen', href: '#listen' },
+  { label: 'Blog', href: '/demos/ten57/blog' },
   { label: 'Contact', href: '#contact' },
 ]
 
