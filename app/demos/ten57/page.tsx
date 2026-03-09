@@ -578,7 +578,7 @@ export default function Ten57Demo() {
       </footer>
 
       {/* ── Animations CSS ── */}
-      <style jsx>{`
+      <style jsx global>{`
         .hero-gradient {
           background:
             radial-gradient(ellipse at 30% 20%, rgba(220,38,38,.3) 0%, transparent 50%),
