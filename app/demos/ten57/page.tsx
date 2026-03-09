@@ -34,9 +34,9 @@ function Reveal({ children, className = '', delay = 0 }: { children: ReactNode; 
 }
 
 /* ─── Animated counter ─── */
-function Counter({ target, suffix = '' }: { target: number; suffix?: string }) {
+function Counter({ label }: { label: string }) {
   const ref = useRef<HTMLSpanElement>(null)
-  const [value, setValue] = useState(0)
+  const [display, setDisplay] = useState('0')
   const started = useRef(false)
 
   useEffect(() => {
@@ -46,25 +46,51 @@ function Counter({ target, suffix = '' }: { target: number; suffix?: string }) {
       ([e]) => {
         if (e.isIntersecting && !started.current) {
           started.current = true
-          const duration = 1500
-          const start = performance.now()
-          const step = (now: number) => {
-            const progress = Math.min((now - start) / duration, 1)
-            const eased = 1 - Math.pow(1 - progress, 3)
-            setValue(Math.floor(eased * target))
-            if (progress < 1) requestAnimationFrame(step)
-          }
-          requestAnimationFrame(step)
           obs.disconnect()
+
+          if (label === 'Total Streams') {
+            // Dramatic tiered count: 0→100K by 10K, 100K→1M by 100K, 1M→10M by 1M
+            const steps: string[] = []
+            for (let i = 0; i <= 100; i += 10) steps.push(i === 0 ? '0' : `${i}K`)
+            for (let i = 200; i <= 900; i += 100) steps.push(`${i}K`)
+            for (let i = 1; i <= 10; i++) steps.push(`${i}M`)
+            steps.push('10M+')
+            let idx = 0
+            const tick = () => {
+              setDisplay(steps[idx])
+              idx++
+              if (idx < steps.length) {
+                // Accelerate then decelerate
+                const progress = idx / steps.length
+                const delay = progress < 0.3 ? 80 : progress < 0.7 ? 50 : 100
+                setTimeout(tick, delay)
+              }
+            }
+            tick()
+          } else {
+            // Standard count for other stats
+            const match = label === 'Releases' ? { target: 50, suffix: '+' }
+              : label === 'Artists' ? { target: 12, suffix: '' }
+              : { target: 4, suffix: '' }
+            const duration = 2500
+            const start = performance.now()
+            const step = (now: number) => {
+              const progress = Math.min((now - start) / duration, 1)
+              const eased = 1 - Math.pow(1 - progress, 4)
+              setDisplay(Math.floor(eased * match.target) + match.suffix)
+              if (progress < 1) requestAnimationFrame(step)
+            }
+            requestAnimationFrame(step)
+          }
         }
       },
       { threshold: 0.5 },
     )
     obs.observe(el)
     return () => obs.disconnect()
-  }, [target])
+  }, [label])
 
-  return <span ref={ref}>{value}{suffix}</span>
+  return <span ref={ref}>{display}</span>
 }
 
 /* ─── Hero slideshow ─── */
@@ -80,14 +106,9 @@ const HERO_IMAGES = [
 ]
 
 function HeroSlideshow() {
-  const [current, setCurrent] = useState(0)
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrent((c) => (c + 1) % HERO_IMAGES.length)
-    }, 6000)
-    return () => clearInterval(timer)
-  }, [])
+  const total = HERO_IMAGES.length
+  const durationPerSlide = 7 // seconds each slide is visible
+  const totalDuration = durationPerSlide * total // full cycle
 
   return (
     <div className="absolute inset-0">
@@ -97,11 +118,10 @@ function HeroSlideshow() {
           key={src}
           src={src}
           alt=""
-          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-[2000ms] ${
-            i === current ? 'opacity-30' : 'opacity-0'
-          }`}
+          className="absolute inset-0 w-full h-full object-cover hero-slide"
           style={{
-            animation: i === current ? 'kenBurns 6s ease-in-out forwards' : undefined,
+            animationDelay: `${i * durationPerSlide}s`,
+            animationDuration: `${totalDuration}s`,
           }}
         />
       ))}
@@ -136,10 +156,10 @@ const SPOTLIGHT = [
 ]
 
 const STATS = [
-  { value: 50, suffix: '+', label: 'Releases' },
-  { value: 10, suffix: 'M+', label: 'Total Streams' },
-  { value: 12, suffix: '', label: 'Artists' },
-  { value: 4, suffix: '', label: 'Genres' },
+  { label: 'Releases' },
+  { label: 'Total Streams' },
+  { label: 'Artists' },
+  { label: 'Genres' },
 ]
 
 const SERVICES = [
@@ -343,7 +363,7 @@ export default function Ten57Demo() {
               <Reveal key={stat.label} delay={i * 100}>
                 <div className="border border-zinc-800 rounded-lg p-5 sm:p-6 text-center hover:border-red-600/50 transition-colors">
                   <p className="text-3xl sm:text-4xl font-bold bg-gradient-to-b from-zinc-200 to-zinc-500 bg-clip-text text-transparent font-[family-name:var(--font-display)]">
-                    <Counter target={stat.value} suffix={stat.suffix} />
+                    <Counter label={stat.label} />
                   </p>
                   <p className="text-zinc-500 text-xs sm:text-sm mt-1 uppercase tracking-wider">
                     {stat.label}
@@ -585,9 +605,20 @@ export default function Ten57Demo() {
           from { opacity: 0; transform: translateY(20px); }
           to { opacity: 1; transform: none; }
         }
-        @keyframes kenBurns {
-          0% { transform: scale(1); }
-          100% { transform: scale(1.08); }
+        .hero-slide {
+          opacity: 0;
+          transform: scale(1);
+          animation-name: heroSlide;
+          animation-timing-function: ease-in-out;
+          animation-iteration-count: infinite;
+          animation-fill-mode: both;
+        }
+        @keyframes heroSlide {
+          0%     { opacity: 0; transform: scale(1); }
+          2%     { opacity: 0.3; }
+          10.5%  { opacity: 0.3; transform: scale(1.06); }
+          12.5%  { opacity: 0; transform: scale(1.08); }
+          100%   { opacity: 0; transform: scale(1); }
         }
       `}</style>
     </div>
