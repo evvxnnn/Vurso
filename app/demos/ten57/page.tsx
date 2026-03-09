@@ -18,12 +18,14 @@ const SPOTLIGHT = [
     name: 'Dreezy',
     role: 'Hip-Hop / R&B',
     spotifyId: '7gWumE1wMALHXANLSIt054',
+    image: 'https://i.scdn.co/image/ab6761610000e5eb7e4ce6fbd012d0b1260ea5fa',
     highlight: 'Collab with T-Pain on TEN57',
   },
   {
     name: 'DIRTYXAN',
     role: 'Hip-Hop',
     spotifyId: '5BEGUGWpPDPKXCgqubqnLB',
+    image: 'https://i.scdn.co/image/ab6761610000e5eb8be89d75890d7d39c45e7c6c',
     highlight: '500K+ monthly listeners',
   },
 ]
@@ -236,11 +238,12 @@ export default function Ten57Demo() {
                 rel="noopener noreferrer"
                 className="group overflow-hidden rounded-lg border border-zinc-800 hover:border-red-600/50 transition-colors"
               >
-                <div className="aspect-square bg-zinc-900 flex items-center justify-center">
-                  <span className="text-6xl font-bold text-zinc-800 group-hover:text-red-600/30 transition-colors">
-                    {artist.name.charAt(0)}
-                  </span>
-                </div>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={artist.image}
+                  alt={artist.name}
+                  className="aspect-square w-full object-cover bg-zinc-900"
+                />
                 <div className="p-5">
                   <h3 className="text-xl font-semibold mb-1">{artist.name}</h3>
                   <p className="text-red-500 text-sm mb-2">{artist.role}</p>

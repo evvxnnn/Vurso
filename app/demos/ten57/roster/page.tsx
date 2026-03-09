@@ -9,22 +9,87 @@ interface Artist {
   genre: string
   signed: string // YYYY-MM-DD for sorting
   signedLabel: string
-  placeholder: string
+  image?: string // Spotify profile image URL
+  spotifyUrl?: string
 }
 
 const ARTISTS: Artist[] = [
-  { name: 'Artist A', genre: 'Hip-Hop / R&B', signed: '2022-01-15', signedLabel: 'Jan 2022', placeholder: 'A' },
-  { name: 'Artist B', genre: 'Pop / Electronic', signed: '2022-04-10', signedLabel: 'Apr 2022', placeholder: 'B' },
-  { name: 'Artist C', genre: 'Latin / Reggaeton', signed: '2022-08-22', signedLabel: 'Aug 2022', placeholder: 'C' },
-  { name: 'Artist D', genre: 'Alternative / Indie', signed: '2023-01-05', signedLabel: 'Jan 2023', placeholder: 'D' },
-  { name: 'Artist E', genre: 'Hip-Hop / R&B', signed: '2023-03-18', signedLabel: 'Mar 2023', placeholder: 'E' },
-  { name: 'Artist F', genre: 'Pop / Electronic', signed: '2023-06-30', signedLabel: 'Jun 2023', placeholder: 'F' },
-  { name: 'Artist G', genre: 'Latin / Reggaeton', signed: '2023-09-12', signedLabel: 'Sep 2023', placeholder: 'G' },
-  { name: 'Artist H', genre: 'Hip-Hop / R&B', signed: '2024-01-20', signedLabel: 'Jan 2024', placeholder: 'H' },
-  { name: 'Artist I', genre: 'Alternative / Indie', signed: '2024-05-08', signedLabel: 'May 2024', placeholder: 'I' },
-  { name: 'Artist J', genre: 'Pop / Electronic', signed: '2024-08-14', signedLabel: 'Aug 2024', placeholder: 'J' },
-  { name: 'Artist K', genre: 'Hip-Hop / R&B', signed: '2024-11-01', signedLabel: 'Nov 2024', placeholder: 'K' },
-  { name: 'Artist L', genre: 'Latin / Reggaeton', signed: '2025-02-10', signedLabel: 'Feb 2025', placeholder: 'L' },
+  {
+    name: 'Dreezy',
+    genre: 'Hip-Hop / R&B',
+    signed: '2023-06-01',
+    signedLabel: 'Jun 2023',
+    image: 'https://i.scdn.co/image/ab6761610000e5eb7e4ce6fbd012d0b1260ea5fa',
+    spotifyUrl: 'https://open.spotify.com/artist/7gWumE1wMALHXANLSIt054',
+  },
+  {
+    name: 'DIRTYXAN',
+    genre: 'Hip-Hop',
+    signed: '2022-09-15',
+    signedLabel: 'Sep 2022',
+    image: 'https://i.scdn.co/image/ab6761610000e5eb8be89d75890d7d39c45e7c6c',
+    spotifyUrl: 'https://open.spotify.com/artist/5BEGUGWpPDPKXCgqubqnLB',
+  },
+  {
+    name: 'Kayo Genesis',
+    genre: 'Hip-Hop',
+    signed: '2022-03-10',
+    signedLabel: 'Mar 2022',
+  },
+  {
+    name: 'Sola Vega',
+    genre: 'R&B / Soul',
+    signed: '2023-01-20',
+    signedLabel: 'Jan 2023',
+  },
+  {
+    name: 'PXRVNO',
+    genre: 'Hip-Hop / Trap',
+    signed: '2023-04-08',
+    signedLabel: 'Apr 2023',
+  },
+  {
+    name: 'Nia Monsoon',
+    genre: 'R&B / Soul',
+    signed: '2023-08-14',
+    signedLabel: 'Aug 2023',
+  },
+  {
+    name: 'Yunø',
+    genre: 'Latin / Reggaeton',
+    signed: '2023-11-02',
+    signedLabel: 'Nov 2023',
+  },
+  {
+    name: 'CVLT45',
+    genre: 'Hip-Hop / Trap',
+    signed: '2024-02-19',
+    signedLabel: 'Feb 2024',
+  },
+  {
+    name: 'Jade Valor',
+    genre: 'Pop / Alternative',
+    signed: '2024-05-30',
+    signedLabel: 'May 2024',
+  },
+  {
+    name: 'BLKSMTH',
+    genre: 'Hip-Hop',
+    signed: '2024-08-22',
+    signedLabel: 'Aug 2024',
+  },
+  {
+    name: 'Rosa Veneno',
+    genre: 'Latin / Reggaeton',
+    signed: '2024-11-10',
+    signedLabel: 'Nov 2024',
+  },
+  {
+    name: 'Axiom',
+    genre: 'Pop / Alternative',
+    signed: '2025-01-15',
+    signedLabel: 'Jan 2025',
+  },
 ]
 
 const SORT_OPTIONS: { key: SortKey; label: string }[] = [
@@ -131,23 +196,40 @@ export default function RosterPage() {
       {/* Artist Grid */}
       <div className="max-w-5xl mx-auto px-6 pb-24">
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filtered.map((artist, i) => (
-            <div
-              key={i}
-              className="group overflow-hidden rounded-lg border border-zinc-800 hover:border-red-600/50 transition-colors"
-            >
-              <div className="aspect-square bg-zinc-900 flex items-center justify-center">
-                <span className="text-6xl font-bold text-zinc-800 group-hover:text-red-600/30 transition-colors">
-                  {artist.placeholder}
-                </span>
+          {filtered.map((artist, i) => {
+            const Card = (
+              <div className="group overflow-hidden rounded-lg border border-zinc-800 hover:border-red-600/50 transition-colors">
+                <div className="aspect-square bg-zinc-900 flex items-center justify-center overflow-hidden">
+                  {artist.image ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={artist.image}
+                      alt={artist.name}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <span className="text-6xl font-bold text-zinc-800 group-hover:text-red-600/30 transition-colors">
+                      {artist.name.charAt(0)}
+                    </span>
+                  )}
+                </div>
+                <div className="p-5">
+                  <h3 className="text-lg font-semibold mb-1">{artist.name}</h3>
+                  <p className="text-red-500 text-sm mb-1">{artist.genre}</p>
+                  <p className="text-zinc-600 text-xs">Signed {artist.signedLabel}</p>
+                </div>
               </div>
-              <div className="p-5">
-                <h3 className="text-lg font-semibold mb-1">{artist.name}</h3>
-                <p className="text-red-500 text-sm mb-1">{artist.genre}</p>
-                <p className="text-zinc-600 text-xs">Signed {artist.signedLabel}</p>
-              </div>
-            </div>
-          ))}
+            )
+
+            if (artist.spotifyUrl) {
+              return (
+                <a key={i} href={artist.spotifyUrl} target="_blank" rel="noopener noreferrer">
+                  {Card}
+                </a>
+              )
+            }
+            return <div key={i}>{Card}</div>
+          })}
         </div>
 
         {filtered.length === 0 && (
