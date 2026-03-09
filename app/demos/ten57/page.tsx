@@ -13,26 +13,18 @@ const NAV_LINKS = [
   { label: 'Contact', href: '#contact' },
 ]
 
-const ROSTER = [
+const SPOTLIGHT = [
   {
-    name: 'Artist Name',
+    name: 'Dreezy',
     role: 'Hip-Hop / R&B',
-    placeholder: 'A',
+    spotifyId: '7gWumE1wMALHXANLSIt054',
+    highlight: 'Collab with T-Pain on TEN57',
   },
   {
-    name: 'Artist Name',
-    role: 'Pop / Electronic',
-    placeholder: 'B',
-  },
-  {
-    name: 'Artist Name',
-    role: 'Latin / Reggaeton',
-    placeholder: 'C',
-  },
-  {
-    name: 'Artist Name',
-    role: 'Alternative / Indie',
-    placeholder: 'D',
+    name: 'DIRTYXAN',
+    role: 'Hip-Hop',
+    spotifyId: '5BEGUGWpPDPKXCgqubqnLB',
+    highlight: '500K+ monthly listeners',
   },
 ]
 
@@ -226,32 +218,35 @@ export default function Ten57Demo() {
         </div>
       </section>
 
-      {/* ── Artist Roster ── */}
+      {/* ── Artist Spotlight ── */}
       <section id="roster" className="py-24 px-6">
         <div className="max-w-5xl mx-auto">
           <p className="text-red-500 uppercase tracking-widest text-sm mb-3 font-semibold text-center">
-            Roster
+            Spotlight
           </p>
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
             The artists building the future.
           </h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {ROSTER.map((artist, i) => (
-              <div
-                key={i}
-                className="group relative overflow-hidden rounded-lg border border-zinc-800 hover:border-red-600/50 transition-colors"
+          <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+            {SPOTLIGHT.map((artist) => (
+              <a
+                key={artist.name}
+                href={`https://open.spotify.com/artist/${artist.spotifyId}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group overflow-hidden rounded-lg border border-zinc-800 hover:border-red-600/50 transition-colors"
               >
-                {/* Placeholder image area */}
                 <div className="aspect-square bg-zinc-900 flex items-center justify-center">
-                  <span className="text-5xl font-bold text-zinc-800 group-hover:text-red-600/30 transition-colors">
-                    {artist.placeholder}
+                  <span className="text-6xl font-bold text-zinc-800 group-hover:text-red-600/30 transition-colors">
+                    {artist.name.charAt(0)}
                   </span>
                 </div>
-                <div className="p-4">
-                  <h3 className="font-semibold">{artist.name}</h3>
-                  <p className="text-zinc-500 text-sm">{artist.role}</p>
+                <div className="p-5">
+                  <h3 className="text-xl font-semibold mb-1">{artist.name}</h3>
+                  <p className="text-red-500 text-sm mb-2">{artist.role}</p>
+                  <p className="text-zinc-600 text-xs">{artist.highlight}</p>
                 </div>
-              </div>
+              </a>
             ))}
           </div>
           <div className="text-center mt-12">
@@ -274,23 +269,19 @@ export default function Ten57Demo() {
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
             Latest releases.
           </h2>
-          {/* Spotify playlist embed — replace the playlist ID below with the real one */}
           <div className="rounded-lg overflow-hidden border border-zinc-800">
             <iframe
               style={{ borderRadius: '12px' }}
-              src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M?utm_source=generator&theme=0"
+              src="https://open.spotify.com/embed/playlist/1eBIOk9cR9QVUszAR58z5b?utm_source=generator&theme=0"
               width="100%"
-              height="480"
+              height="352"
               frameBorder="0"
+              allowFullScreen
               allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
               loading="lazy"
               title="TEN57 Music Playlist"
             />
           </div>
-          <p className="text-center text-zinc-600 text-sm mt-4">
-            Swap the playlist ID above with TEN57&apos;s own Spotify playlist.
-            New releases added to the playlist appear at the top automatically.
-          </p>
         </div>
       </section>
 
