@@ -24,7 +24,7 @@ export default function Nav({
         <a href="/demos/ten57">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/demos/ten57/logo-nav.png"
+            src="/demos/ten57/logo-nav.webp"
             alt="TEN57 MUSIC"
             className="h-10 sm:h-14 w-auto"
           />
