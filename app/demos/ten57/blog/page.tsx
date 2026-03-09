@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Nav from '../Nav'
 
 type Category = 'all' | 'news' | 'releases' | 'press' | 'culture'
 
@@ -115,32 +116,14 @@ export default function BlogPage() {
 
   return (
     <div className="min-h-screen bg-black text-white" style={{ fontFamily: "'Inter', system-ui, sans-serif" }}>
-      {/* Nav */}
-      <nav className="sticky top-0 z-50 border-b border-white/10 bg-black/80 backdrop-blur-md">
-        <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
-          <a href="/demos/ten57">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/demos/ten57/logo-nav.png"
-              alt="TEN57 MUSIC"
-              className="h-14 w-auto"
-            />
-          </a>
-          <a
-            href="/demos/ten57"
-            className="text-zinc-400 hover:text-red-500 transition-colors text-sm tracking-widest uppercase"
-          >
-            Back to Home
-          </a>
-        </div>
-      </nav>
+      <Nav backLabel="Back to Home" backHref="/demos/ten57" />
 
       {/* Header */}
-      <section className="py-20 px-6 text-center">
+      <section className="pt-24 pb-10 md:py-20 px-6 text-center">
         <p className="text-red-500 uppercase tracking-widest text-sm mb-3 font-semibold">
           Blog
         </p>
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">
+        <h1 className="text-3xl md:text-5xl font-bold mb-4">
           News & Culture
         </h1>
         <p className="text-zinc-500 max-w-xl mx-auto">
@@ -156,7 +139,7 @@ export default function BlogPage() {
               key={post.title}
               className="group border border-zinc-800 rounded-lg overflow-hidden hover:border-red-600/50 transition-colors cursor-pointer"
             >
-              <div className="h-48 bg-zinc-900 flex items-center justify-center">
+              <div className="h-40 sm:h-48 bg-zinc-900 flex items-center justify-center">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" className="w-12 h-12 text-zinc-800 group-hover:text-red-600/30 transition-colors">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 01-2.25 2.25M16.5 7.5V18a2.25 2.25 0 002.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 002.25 2.25h13.5M6 7.5h3v3H6v-3z" />
                 </svg>
@@ -193,7 +176,7 @@ export default function BlogPage() {
             <button
               key={cat.key}
               onClick={() => setFilter(cat.key)}
-              className={`px-4 py-1.5 text-sm rounded transition-colors ${
+              className={`px-4 py-2.5 text-sm rounded transition-colors ${
                 filter === cat.key
                   ? 'bg-red-600 text-white'
                   : 'bg-zinc-900 text-zinc-400 hover:text-white border border-zinc-800'

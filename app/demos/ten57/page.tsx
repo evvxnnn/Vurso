@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Nav from './Nav'
 
 export const metadata: Metadata = {
   title: 'TEN57 MUSIC | Soundtrack to the Future',
@@ -77,30 +78,7 @@ const SERVICES = [
 export default function Ten57Demo() {
   return (
     <div className="min-h-screen bg-black text-white" style={{ fontFamily: "'Inter', system-ui, sans-serif" }}>
-      {/* ── Navigation ── */}
-      <nav className="fixed top-0 inset-x-0 z-50 border-b border-white/10 bg-black/80 backdrop-blur-md">
-        <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/demos/ten57/logo-nav.png"
-            alt="TEN57 MUSIC"
-            className="h-14 w-auto"
-          />
-          <ul className="hidden md:flex items-center gap-8 text-sm tracking-widest uppercase">
-            {NAV_LINKS.map((l) => (
-              <li key={l.href}>
-                <a
-                  href={l.href}
-                  className="text-zinc-400 hover:text-red-500 transition-colors"
-                >
-                  {l.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-          {/* Mobile: just show the logo — nav links scroll naturally */}
-        </div>
-      </nav>
+      <Nav links={NAV_LINKS} />
 
       {/* ── Hero ── */}
       <section className="relative flex items-center justify-center min-h-screen overflow-hidden pt-20">
@@ -151,8 +129,8 @@ export default function Ten57Demo() {
       </section>
 
       {/* ── About ── */}
-      <section id="about" className="py-24 px-6">
-        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+      <section id="about" className="py-16 md:py-24 px-6">
+        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-10 md:gap-16 items-center">
           <div>
             <p className="text-red-500 uppercase tracking-widest text-sm mb-3 font-semibold">
               About
@@ -172,7 +150,7 @@ export default function Ten57Demo() {
             </p>
           </div>
           {/* Stats / social proof */}
-          <div className="grid grid-cols-2 gap-6">
+          <div className="grid grid-cols-2 gap-3 sm:gap-6">
             {[
               { value: '50+', label: 'Releases' },
               { value: '10M+', label: 'Total Streams' },
@@ -196,15 +174,15 @@ export default function Ten57Demo() {
       </section>
 
       {/* ── Services ── */}
-      <section className="py-24 px-6 bg-zinc-950">
+      <section className="py-16 md:py-24 px-6 bg-zinc-950">
         <div className="max-w-5xl mx-auto">
           <p className="text-red-500 uppercase tracking-widest text-sm mb-3 font-semibold text-center">
             What We Do
           </p>
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-10 md:mb-16">
             Full-service label, zero compromise.
           </h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8">
             {SERVICES.map((s) => (
               <div
                 key={s.title}
@@ -222,15 +200,15 @@ export default function Ten57Demo() {
       </section>
 
       {/* ── Artist Spotlight ── */}
-      <section id="roster" className="py-24 px-6">
+      <section id="roster" className="py-16 md:py-24 px-6">
         <div className="max-w-5xl mx-auto">
           <p className="text-red-500 uppercase tracking-widest text-sm mb-3 font-semibold text-center">
             Spotlight
           </p>
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-10 md:mb-16">
             The artists building the future.
           </h2>
-          <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+          <div className="grid sm:grid-cols-2 gap-6 sm:gap-8 max-w-3xl mx-auto">
             {SPOTLIGHT.map((artist) => (
               <a
                 key={artist.name}
@@ -265,12 +243,12 @@ export default function Ten57Demo() {
       </section>
 
       {/* ── Listen ── */}
-      <section id="listen" className="py-24 px-6 bg-zinc-950">
+      <section id="listen" className="py-16 md:py-24 px-6 bg-zinc-950">
         <div className="max-w-4xl mx-auto">
           <p className="text-red-500 uppercase tracking-widest text-sm mb-3 font-semibold text-center">
             Listen
           </p>
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-10 md:mb-16">
             Latest releases.
           </h2>
           <div className="rounded-lg overflow-hidden border border-zinc-800">
@@ -290,7 +268,7 @@ export default function Ten57Demo() {
       </section>
 
       {/* ── Contact ── */}
-      <section id="contact" className="py-24 px-6">
+      <section id="contact" className="py-16 md:py-24 px-6">
         <div className="max-w-2xl mx-auto">
           <p className="text-red-500 uppercase tracking-widest text-sm mb-3 font-semibold text-center">
             Contact
@@ -345,12 +323,12 @@ export default function Ten57Demo() {
             alt="TEN57 MUSIC"
             className="h-8 w-auto opacity-60"
           />
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-2">
             <a
               href="https://instagram.com/ten57music"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-zinc-600 hover:text-red-500 transition-colors"
+              className="flex items-center justify-center w-11 h-11 rounded-full text-zinc-600 hover:text-red-500 transition-colors"
             >
               <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
                 <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
@@ -360,7 +338,7 @@ export default function Ten57Demo() {
               href="https://twitter.com/ten57music"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-zinc-600 hover:text-red-500 transition-colors"
+              className="flex items-center justify-center w-11 h-11 rounded-full text-zinc-600 hover:text-red-500 transition-colors"
             >
               <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
                 <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />

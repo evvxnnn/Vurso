@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useMemo } from 'react'
+import Nav from '../Nav'
 
 type SortKey = 'name' | 'genre' | 'signed'
 
@@ -128,32 +129,14 @@ export default function RosterPage() {
 
   return (
     <div className="min-h-screen bg-black text-white" style={{ fontFamily: "'Inter', system-ui, sans-serif" }}>
-      {/* Nav */}
-      <nav className="sticky top-0 z-50 border-b border-white/10 bg-black/80 backdrop-blur-md">
-        <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
-          <a href="/demos/ten57">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/demos/ten57/logo-nav.png"
-              alt="TEN57 MUSIC"
-              className="h-14 w-auto"
-            />
-          </a>
-          <a
-            href="/demos/ten57"
-            className="text-zinc-400 hover:text-red-500 transition-colors text-sm tracking-widest uppercase"
-          >
-            Back to Home
-          </a>
-        </div>
-      </nav>
+      <Nav backLabel="Back to Home" backHref="/demos/ten57" />
 
       {/* Header */}
-      <section className="py-20 px-6 text-center">
+      <section className="pt-24 pb-10 md:py-20 px-6 text-center">
         <p className="text-red-500 uppercase tracking-widest text-sm mb-3 font-semibold">
           Roster
         </p>
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">
+        <h1 className="text-3xl md:text-5xl font-bold mb-4">
           Our Artists
         </h1>
         <p className="text-zinc-500 max-w-xl mx-auto">
@@ -162,17 +145,17 @@ export default function RosterPage() {
       </section>
 
       {/* Controls */}
-      <div className="max-w-5xl mx-auto px-6 mb-12">
-        <div className="flex flex-wrap items-center gap-4">
+      <div className="max-w-5xl mx-auto px-6 mb-8 md:mb-12">
+        <div className="flex flex-col sm:flex-row sm:items-center gap-4">
           {/* Sort */}
           <div className="flex items-center gap-2">
-            <span className="text-zinc-600 text-sm uppercase tracking-wider">Sort:</span>
+            <span className="text-zinc-600 text-sm uppercase tracking-wider shrink-0">Sort:</span>
             <div className="flex gap-1">
               {SORT_OPTIONS.map((opt) => (
                 <button
                   key={opt.key}
                   onClick={() => setSort(opt.key)}
-                  className={`px-3 py-1.5 text-sm rounded transition-colors ${
+                  className={`px-3 py-2 text-sm rounded transition-colors ${
                     sort === opt.key
                       ? 'bg-red-600 text-white'
                       : 'bg-zinc-900 text-zinc-400 hover:text-white border border-zinc-800'
@@ -185,12 +168,12 @@ export default function RosterPage() {
           </div>
 
           {/* Filter */}
-          <div className="flex items-center gap-2 ml-auto">
-            <span className="text-zinc-600 text-sm uppercase tracking-wider">Genre:</span>
+          <div className="flex items-center gap-2 sm:ml-auto">
+            <span className="text-zinc-600 text-sm uppercase tracking-wider shrink-0">Genre:</span>
             <select
               value={filterGenre}
               onChange={(e) => setFilterGenre(e.target.value)}
-              className="bg-zinc-900 border border-zinc-800 rounded px-3 py-1.5 text-sm text-zinc-300 focus:outline-none focus:border-red-600 transition-colors"
+              className="bg-zinc-900 border border-zinc-800 rounded px-3 py-2 text-sm text-zinc-300 focus:outline-none focus:border-red-600 transition-colors"
             >
               <option value="all">All Genres</option>
               {GENRES.map((g) => (
