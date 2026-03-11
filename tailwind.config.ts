@@ -16,9 +16,20 @@ const config: Config = {
         'light-purple': '#F3E8FF',
         'light-gray': '#F8FAFC',
         'dark-gray': '#64748B',
+        // ABH demo colors
+        rose: {
+          DEFAULT: '#b8898a',
+          dark: '#9a7071',
+          light: '#d4a9aa',
+        },
+        blush: '#fdf5f5',
+        charcoal: '#2d2424',
+        cream: '#fffaf9',
+        gold: '#c9a96e',
       },
       fontFamily: {
         sans: ['var(--font-geist)', 'system-ui', 'sans-serif'],
+        script: ['var(--font-allura)', 'cursive'],
       },
       backdropBlur: {
         xs: '2px',
