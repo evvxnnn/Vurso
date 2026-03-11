@@ -39,12 +39,12 @@ const FEATURED_SERVICES = [
 ]
 
 const PORTFOLIO = [
-  { id: 'p1', caption: 'Lived-in balayage on brunette base — effortless dimension.', tags: ['balayage', 'brunette'], gradient: 'from-amber-200 via-rose-200 to-pink-200', emoji: '✨' },
-  { id: 'p2', caption: 'Icy platinum transformation — 3 sessions to perfection.', tags: ['platinum', 'blonde'], gradient: 'from-slate-100 via-blue-100 to-purple-100', emoji: '❄️' },
-  { id: 'p3', caption: 'Curtain bangs + layers for that perfect frame.', tags: ['cut', 'bangs'], gradient: 'from-orange-100 via-amber-100 to-yellow-100', emoji: '💇' },
-  { id: 'p4', caption: 'Rich copper tones for fall — warm and dimensional.', tags: ['color', 'copper'], gradient: 'from-orange-200 via-red-200 to-amber-200', emoji: '🍂' },
-  { id: 'p5', caption: 'Bridal updo — romantic and effortless.', tags: ['styling', 'bridal'], gradient: 'from-pink-100 via-rose-100 to-white', emoji: '💐' },
-  { id: 'p6', caption: 'Keratin smoothing on thick curly hair — frizz-free for weeks.', tags: ['treatment', 'keratin'], gradient: 'from-teal-100 via-emerald-100 to-green-100', emoji: '🌿' },
+  { id: 'p1', caption: 'Lived-in balayage on brunette base — effortless dimension.', tags: ['balayage', 'brunette'], image: '/demos/abh/portfolio/balayage-brunette.webp' },
+  { id: 'p2', caption: 'Icy platinum transformation — 3 sessions to perfection.', tags: ['platinum', 'blonde'], image: '/demos/abh/portfolio/icy-platinum.webp' },
+  { id: 'p3', caption: 'Curtain bangs + layers for that perfect frame.', tags: ['cut', 'bangs'], image: '/demos/abh/portfolio/curtain-bangs.webp' },
+  { id: 'p4', caption: 'Rich copper tones for fall — warm and dimensional.', tags: ['color', 'copper'], image: '/demos/abh/portfolio/copper-tones.webp' },
+  { id: 'p5', caption: 'Bridal updo — romantic and effortless.', tags: ['styling', 'bridal'], image: '/demos/abh/portfolio/bridal-updo.webp' },
+  { id: 'p6', caption: 'Keratin smoothing on thick curly hair — frizz-free for weeks.', tags: ['treatment', 'keratin'], image: '/demos/abh/portfolio/keratin-smoothing.webp' },
 ]
 
 const TESTIMONIALS = [
@@ -168,13 +168,9 @@ export default function ABHHome() {
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
             {PORTFOLIO.map(item => (
-              <div key={item.id} className="group relative aspect-square rounded-xl overflow-hidden bg-gradient-to-br shadow-sm hover:shadow-lg transition-all">
-                <div className={`absolute inset-0 bg-gradient-to-br ${item.gradient}`} />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="text-4xl sm:text-5xl opacity-60 group-hover:scale-110 transition-transform">
-                    {item.emoji}
-                  </span>
-                </div>
+              <div key={item.id} className="group relative aspect-square rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={item.image} alt={item.caption} className="absolute inset-0 w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-charcoal/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
                   <div className="text-left">
                     <p className="text-white text-sm leading-snug">{item.caption}</p>

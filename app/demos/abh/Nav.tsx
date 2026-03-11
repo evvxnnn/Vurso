@@ -31,7 +31,7 @@ export default function Nav() {
         <a href="/demos/abh" className="flex-shrink-0" onClick={() => setMenuOpen(false)}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/demos/abh/logo.png"
+            src="/demos/abh/logo.webp"
             alt="Andrea Burton Hair"
             className="h-10 sm:h-12 w-auto"
           />

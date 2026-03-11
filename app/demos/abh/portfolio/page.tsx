@@ -24,20 +24,19 @@ interface PortfolioItem {
   id: string
   caption: string
   tags: string[]
-  gradient: string
-  emoji: string
+  image: string
 }
 
 const ITEMS: PortfolioItem[] = [
-  { id: 'p1', caption: 'Lived-in balayage on brunette base — effortless dimension.', tags: ['balayage', 'brunette', 'color'], gradient: 'from-amber-200 via-rose-200 to-pink-200', emoji: '✨' },
-  { id: 'p2', caption: 'Icy platinum transformation — 3 sessions to perfection.', tags: ['platinum', 'blonde', 'color'], gradient: 'from-slate-100 via-blue-100 to-purple-100', emoji: '❄️' },
-  { id: 'p3', caption: 'Curtain bangs + layers for that perfect frame.', tags: ['cut', 'bangs', 'layers'], gradient: 'from-orange-100 via-amber-100 to-yellow-100', emoji: '💇' },
-  { id: 'p4', caption: 'Rich copper tones for fall — warm and dimensional.', tags: ['color', 'copper', 'fall'], gradient: 'from-orange-200 via-red-200 to-amber-200', emoji: '🍂' },
-  { id: 'p5', caption: 'Bridal updo — romantic and effortless.', tags: ['styling', 'bridal', 'updo'], gradient: 'from-pink-100 via-rose-100 to-white', emoji: '💐' },
-  { id: 'p6', caption: 'Keratin smoothing on thick curly hair — frizz-free for weeks.', tags: ['treatment', 'keratin', 'smooth'], gradient: 'from-teal-100 via-emerald-100 to-green-100', emoji: '🌿' },
-  { id: 'p7', caption: 'Face-framing highlights on dark hair — subtle glow.', tags: ['highlights', 'color', 'brunette'], gradient: 'from-yellow-100 via-amber-100 to-orange-100', emoji: '☀️' },
-  { id: 'p8', caption: 'Textured bob with shadow root — low maintenance, high style.', tags: ['cut', 'bob', 'color'], gradient: 'from-stone-200 via-gray-200 to-slate-200', emoji: '💎' },
-  { id: 'p9', caption: 'Vivid rose gold — custom formula, one of a kind.', tags: ['color', 'vivid', 'rose-gold'], gradient: 'from-pink-200 via-rose-200 to-amber-100', emoji: '🌸' },
+  { id: 'p1', caption: 'Lived-in balayage on brunette base — effortless dimension.', tags: ['balayage', 'brunette', 'color'], image: '/demos/abh/portfolio/balayage-brunette.webp' },
+  { id: 'p2', caption: 'Icy platinum transformation — 3 sessions to perfection.', tags: ['platinum', 'blonde', 'color'], image: '/demos/abh/portfolio/icy-platinum.webp' },
+  { id: 'p3', caption: 'Curtain bangs + layers for that perfect frame.', tags: ['cut', 'bangs', 'layers'], image: '/demos/abh/portfolio/curtain-bangs.webp' },
+  { id: 'p4', caption: 'Rich copper tones for fall — warm and dimensional.', tags: ['color', 'copper', 'fall'], image: '/demos/abh/portfolio/copper-tones.webp' },
+  { id: 'p5', caption: 'Bridal updo — romantic and effortless.', tags: ['styling', 'bridal', 'updo'], image: '/demos/abh/portfolio/bridal-updo.webp' },
+  { id: 'p6', caption: 'Keratin smoothing on thick curly hair — frizz-free for weeks.', tags: ['treatment', 'keratin', 'smooth'], image: '/demos/abh/portfolio/keratin-smoothing.webp' },
+  { id: 'p7', caption: 'Face-framing highlights on dark hair — subtle glow.', tags: ['highlights', 'color', 'brunette'], image: '/demos/abh/portfolio/face-framing-highlights.webp' },
+  { id: 'p8', caption: 'Textured bob with shadow root — low maintenance, high style.', tags: ['cut', 'bob', 'color'], image: '/demos/abh/portfolio/textured-bob.webp' },
+  { id: 'p9', caption: 'Vivid rose gold — custom formula, one of a kind.', tags: ['color', 'vivid', 'rose-gold'], image: '/demos/abh/portfolio/rose-gold.webp' },
 ]
 
 export default function PortfolioPage() {
@@ -84,14 +83,10 @@ export default function PortfolioPage() {
               <button
                 key={item.id}
                 onClick={() => setExpanded(item.id)}
-                className="group relative aspect-square rounded-xl overflow-hidden bg-gradient-to-br shadow-sm hover:shadow-lg transition-all cursor-pointer w-full"
+                className="group relative aspect-square rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all cursor-pointer w-full"
               >
-                <div className={`absolute inset-0 bg-gradient-to-br ${item.gradient}`} />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="text-4xl sm:text-5xl opacity-60 group-hover:scale-110 transition-transform">
-                    {item.emoji}
-                  </span>
-                </div>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={item.image} alt={item.caption} className="absolute inset-0 w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-charcoal/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
                   <div className="text-left">
                     <p className="text-white text-sm leading-snug">{item.caption}</p>
@@ -116,8 +111,9 @@ export default function PortfolioPage() {
         {expandedItem && (
           <div className="fixed inset-0 z-50 bg-charcoal/70 flex items-center justify-center p-4" onClick={() => setExpanded(null)}>
             <div className="bg-white rounded-2xl max-w-2xl w-full overflow-hidden shadow-2xl" onClick={e => e.stopPropagation()}>
-              <div className={`aspect-video bg-gradient-to-br ${expandedItem.gradient} flex items-center justify-center`}>
-                <span className="text-6xl">{expandedItem.emoji}</span>
+              <div className="bg-charcoal/5 flex items-center justify-center">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={expandedItem.image} alt={expandedItem.caption} className="max-w-full max-h-[70vh] object-contain" />
               </div>
               <div className="p-6">
                 <p className="text-charcoal/70 leading-relaxed mb-4">{expandedItem.caption}</p>
