@@ -49,28 +49,28 @@ interface MenuItem {
   numPrice?: number
   category: Category
   tag?: string
+  image?: string
 }
 
 const MENU_ITEMS: MenuItem[] = [
   // Beginnings
-  { id: 'app-1', name: 'Shrimp Cocktail', description: 'Jumbo shrimp with house cocktail sauce and lemon.', price: '$17', numPrice: 17, category: 'Beginnings' },
-  { id: 'app-2', name: 'Lobster Voodoo', description: 'Fried lobster tail tossed in our spicy voodoo sauce.', price: '$29', numPrice: 29, category: 'Beginnings', tag: 'Popular' },
-  { id: 'app-3', name: 'Boom Boom Shrimp', description: 'Breaded shrimp tenders in creamy remoulade sauce.', price: '$17', numPrice: 17, category: 'Beginnings' },
-  { id: 'app-4', name: 'Onion Flower', description: 'Battered and fried jumbo onion with special sauce.', price: '$14', numPrice: 14, category: 'Beginnings' },
-  { id: 'app-5', name: 'Cheese Bread', description: 'Garlic French bread topped with three cheeses.', price: '$13', numPrice: 13, category: 'Beginnings' },
-  { id: 'app-6', name: 'Potato Skins', description: 'Loaded with mozzarella, cheddar, and bacon. Served with sour cream.', price: '$16', numPrice: 16, category: 'Beginnings' },
-  { id: 'app-7', name: 'Stuffed Tater Tots', description: 'Bacon and cheese-filled tots with Santé Fe Ranch dipping sauce.', price: '$15', numPrice: 15, category: 'Beginnings' },
+  { id: 'app-1', name: 'Shrimp Cocktail', description: 'Jumbo shrimp with house cocktail sauce and lemon.', price: '$17', numPrice: 17, category: 'Beginnings', image: '/demos/bynums/menu items/shrimp-cocktail.webp' },
+  { id: 'app-2', name: 'Lobster Voodoo', description: 'Fried lobster tail tossed in our spicy voodoo sauce.', price: '$29', numPrice: 29, category: 'Beginnings', tag: 'Popular', image: '/demos/bynums/menu items/lobster-voodoo.webp' },
+  { id: 'app-3', name: 'Boom Boom Shrimp', description: 'Breaded shrimp tenders in creamy remoulade sauce.', price: '$17', numPrice: 17, category: 'Beginnings', image: '/demos/bynums/menu items/boom-boom-shrimp.webp' },
+  { id: 'app-4', name: 'Onion Flower', description: 'Battered and fried jumbo onion with special sauce.', price: '$14', numPrice: 14, category: 'Beginnings', image: '/demos/bynums/menu items/onion-flower.webp' },
+  { id: 'app-5', name: 'Cheese Bread', description: 'Garlic French bread topped with three cheeses.', price: '$13', numPrice: 13, category: 'Beginnings', image: '/demos/bynums/menu items/cheese-bread.webp' },
+  { id: 'app-6', name: 'Potato Skins', description: 'Loaded with mozzarella, cheddar, and bacon. Served with sour cream.', price: '$16', numPrice: 16, category: 'Beginnings', image: '/demos/bynums/menu items/loaded-potato-skins.webp' },
+  { id: 'app-7', name: 'Stuffed Tater Tots', description: 'Bacon and cheese-filled tots with Santé Fe Ranch dipping sauce.', price: '$15', numPrice: 15, category: 'Beginnings', image: '/demos/bynums/menu items/stuffed-tots.webp' },
 
   // Salads
-  { id: 'sal-1', name: 'Cajun Chicken Salad', description: 'Grilled or fried Cajun chicken with parmesan and mixed vegetables.', price: '$20', numPrice: 20, category: 'Salads' },
-  { id: 'sal-2', name: 'Black & Bleu Salad', description: 'Blackened prime rib encrusted with bleu cheese, bacon, and tomatoes.', price: '$26', numPrice: 26, category: 'Salads', tag: 'Popular' },
-  { id: 'sal-3', name: "Bynum's Chef Salad", description: 'Ham, turkey, bacon bits, cheddar, and hard boiled egg.', price: '$21', numPrice: 21, category: 'Salads' },
+  { id: 'sal-1', name: 'Cajun Chicken Salad', description: 'Grilled or fried Cajun chicken with parmesan and mixed vegetables.', price: '$20', numPrice: 20, category: 'Salads', image: '/demos/bynums/menu items/cajun-chicken-salad.webp' },
+  { id: 'sal-2', name: 'Black & Bleu Salad', description: 'Blackened prime rib encrusted with bleu cheese, bacon, and tomatoes.', price: '$26', numPrice: 26, category: 'Salads', tag: 'Popular', image: '/demos/bynums/menu items/black-bleu-salad.webp' },
+  { id: 'sal-3', name: "Bynum's Chef Salad", description: 'Ham, turkey, bacon bits, cheddar, and hard boiled egg.', price: '$21', numPrice: 21, category: 'Salads', image: '/demos/bynums/menu items/chef-salad.webp' },
 
   // Steaks
-  { id: 'stk-1', name: 'Prime Rib', description: '32oz bone-in, slow roasted with horseradish sauce and au jus.', detail: 'Our signature cut — a massive 32-ounce bone-in prime rib, slow roasted to perfection. Served with house-made horseradish sauce and au jus. Includes onion soup, garden salad, warm bread, and choice of side.', price: '$78', numPrice: 78, category: 'Steaks & Entrées', tag: 'Signature' },
-  { id: 'stk-2', name: 'NY Strip', description: '20oz hand-cut Angus, wet-aged 21 days.', detail: '20-ounce hand-cut NY Strip from Angus beef, wet-aged 21 days for peak tenderness. Cut 1.5–2 inches thick. Includes onion soup, garden salad, warm bread, and choice of side.', price: '$54', numPrice: 54, category: 'Steaks & Entrées' },
-  { id: 'stk-3', name: 'Filet Mignon', description: 'The most tender cut — regular.', detail: 'Premium filet mignon, the most tender cut of beef. Melt-in-your-mouth texture with delicate flavor. Includes onion soup, garden salad, warm bread, and choice of side.', price: '$48', numPrice: 48, category: 'Steaks & Entrées', tag: 'Premium' },
-  { id: 'stk-4', name: 'Filet Mignon (Hearty)', description: 'Larger portion of our tender filet.', price: '$54', numPrice: 54, category: 'Steaks & Entrées' },
+  { id: 'stk-1', name: 'Prime Rib', description: '32oz bone-in, slow roasted with horseradish sauce and au jus.', detail: 'Our signature cut — a massive 32-ounce bone-in prime rib, slow roasted to perfection. Served with house-made horseradish sauce and au jus. Includes onion soup, garden salad, warm bread, and choice of side.', price: '$78', numPrice: 78, category: 'Steaks & Entrées', tag: 'Signature', image: '/demos/bynums/menu items/prime-rib.webp' },
+  { id: 'stk-2', name: 'NY Strip', description: '20oz hand-cut Angus, wet-aged 21 days.', detail: '20-ounce hand-cut NY Strip from Angus beef, wet-aged 21 days for peak tenderness. Cut 1.5–2 inches thick. Includes onion soup, garden salad, warm bread, and choice of side.', price: '$54', numPrice: 54, category: 'Steaks & Entrées', image: '/demos/bynums/menu items/ny-strip.webp' },
+  { id: 'stk-3', name: 'Filet Mignon', description: 'The most tender cut of beef. Standard or hearty.', detail: 'Premium filet mignon, the most tender cut of beef. Melt-in-your-mouth texture with delicate flavor. Available in standard ($48) or hearty ($54) portion. Includes onion soup, garden salad, warm bread, and choice of side.', price: '$48 / $54', numPrice: 48, category: 'Steaks & Entrées', tag: 'Premium', image: '/demos/bynums/menu items/filet.webp' },
   { id: 'stk-5', name: 'Porterhouse', description: 'NY strip and filet combination — best of both worlds.', detail: 'The ultimate steak experience — a porterhouse gives you both the NY Strip and the filet in one cut. Includes onion soup, garden salad, warm bread, and choice of side.', price: '$61', numPrice: 61, category: 'Steaks & Entrées' },
   { id: 'stk-6', name: 'Bone-In Ribeye', description: 'Well-marbled Angus beef, rich and flavorful.', detail: 'Beautifully marbled bone-in ribeye from Angus beef. Rich, beefy flavor with juicy tenderness. Wet-aged 21 days. Includes onion soup, garden salad, warm bread, and choice of side.', price: '$68', numPrice: 68, category: 'Steaks & Entrées', tag: 'Popular' },
   { id: 'stk-7', name: 'Steak & Shrimp', description: '14oz NY strip with four breaded jumbo shrimp.', price: '$49', numPrice: 49, category: 'Steaks & Entrées' },
@@ -186,9 +186,14 @@ function DetailModal({ item, onClose, onAdd }: { item: MenuItem; onClose: () => 
         className="relative bg-white rounded-2xl max-w-lg w-full max-h-[80vh] overflow-y-auto shadow-2xl"
         onClick={e => e.stopPropagation()}
       >
-        {/* Image placeholder */}
-        <div className="aspect-[16/9] bg-bn-bg-alt flex items-center justify-center rounded-t-2xl border-b border-bn-border">
-          <span className="text-bn-text-light text-sm">Photo Coming Soon</span>
+        {/* Image */}
+        <div className="aspect-[16/9] bg-bn-bg-alt flex items-center justify-center rounded-t-2xl border-b border-bn-border overflow-hidden">
+          {item.image ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
+          ) : (
+            <span className="text-bn-text-light text-sm">Photo Coming Soon</span>
+          )}
         </div>
         <div className="p-6">
           <div className="flex items-start justify-between gap-3 mb-3">
@@ -547,9 +552,14 @@ export default function MenuPage() {
                     qty > 0 ? 'border-bn-red/30 ring-1 ring-bn-red/10' : 'border-bn-border hover:border-bn-red/20 hover:shadow-sm'
                   }`}
                 >
-                  {/* Image placeholder */}
-                  <div className="aspect-[16/9] bg-bn-bg-alt flex items-center justify-center relative">
-                    <span className="text-bn-text-light/40 text-xs">Photo Coming Soon</span>
+                  {/* Image */}
+                  <div className="aspect-[16/9] bg-bn-bg-alt flex items-center justify-center relative overflow-hidden">
+                    {item.image ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
+                    ) : (
+                      <span className="text-bn-text-light/40 text-xs">Photo Coming Soon</span>
+                    )}
                     {qty > 0 && (
                       <div className="absolute top-2 right-2 w-6 h-6 rounded-full bg-bn-red text-white text-xs font-bold flex items-center justify-center">
                         {qty}
