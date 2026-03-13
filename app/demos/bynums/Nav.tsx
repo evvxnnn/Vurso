@@ -31,14 +31,10 @@ export default function Nav() {
         <a href="/demos/bynums" className="flex items-center gap-3 flex-shrink-0" onClick={() => setMenuOpen(false)}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/demos/bynums/logo.png"
+            src="/demos/bynums/logo-new.webp"
             alt="Bynum's Steakhouse"
-            className="h-10 sm:h-12 w-auto"
+            className="h-12 sm:h-14 w-auto"
           />
-          <div className="hidden sm:block leading-tight">
-            <span className="font-[var(--font-playfair)] text-lg text-bn-text font-bold block">Bynum&apos;s</span>
-            <span className="text-bn-text-mid text-[11px] tracking-[0.15em] uppercase">Steakhouse</span>
-          </div>
         </a>
 
         {/* Desktop links */}

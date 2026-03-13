@@ -12,18 +12,14 @@ export default function Footer() {
             <div className="flex items-center gap-3 mb-4">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/demos/bynums/logo.png"
+                src="/demos/bynums/logo-new.webp"
                 alt="Bynum's Steakhouse"
-                className="h-10 w-auto brightness-[2] contrast-75"
+                className="h-14 w-auto brightness-110"
               />
-              <div className="leading-tight">
-                <span className="font-[var(--font-playfair)] text-lg font-bold block">Bynum&apos;s</span>
-                <span className="text-white/50 text-[11px] tracking-[0.15em] uppercase">Steakhouse</span>
-              </div>
             </div>
             <p className="text-white/40 text-sm leading-relaxed">
-              Voted #1 on Indianapolis&apos; Southside. Serving hand-cut Angus beef
-              and lobster tails for over 20 years. Come as you are.
+              Voted #1 Steakhouse on Indy&apos;s South Side. Serving hand-cut Angus
+              beef and lobster tails for over 20 years. Come as you are.
             </p>
             {/* Social */}
             <div className="flex items-center gap-3 mt-4">
