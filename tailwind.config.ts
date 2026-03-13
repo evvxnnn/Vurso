@@ -26,6 +26,17 @@ const config: Config = {
         charcoal: '#2d2424',
         cream: '#fffaf9',
         gold: '#c9a96e',
+        // Bynums demo colors
+        'bn-gold': {
+          DEFAULT: '#b9a65c',
+          dark: '#9a8340',
+          light: '#d4c48a',
+        },
+        'bn-black': '#1a1a1a',
+        'bn-dark': '#111111',
+        'bn-maroon': '#8b2635',
+        'bn-cream': '#f5f0e8',
+        'bn-warm': '#2a2018',
       },
       fontFamily: {
         sans: ['var(--font-geist)', 'system-ui', 'sans-serif'],
