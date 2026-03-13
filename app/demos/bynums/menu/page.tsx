@@ -40,6 +40,11 @@ const CATEGORIES = [
 
 type Category = (typeof CATEGORIES)[number]
 
+interface MenuVariant {
+  label: string
+  price: number
+}
+
 interface MenuItem {
   id: string
   name: string
@@ -50,6 +55,7 @@ interface MenuItem {
   category: Category
   tag?: string
   image?: string
+  variants?: MenuVariant[]
 }
 
 const MENU_ITEMS: MenuItem[] = [
@@ -70,27 +76,27 @@ const MENU_ITEMS: MenuItem[] = [
   // Steaks
   { id: 'stk-1', name: 'Prime Rib', description: '32oz bone-in, slow roasted with horseradish sauce and au jus.', detail: 'Our signature cut — a massive 32-ounce bone-in prime rib, slow roasted to perfection. Served with house-made horseradish sauce and au jus. Includes onion soup, garden salad, warm bread, and choice of side.', price: '$78', numPrice: 78, category: 'Steaks & Entrées', tag: 'Signature', image: '/demos/bynums/menu items/prime-rib.webp' },
   { id: 'stk-2', name: 'NY Strip', description: '20oz hand-cut Angus, wet-aged 21 days.', detail: '20-ounce hand-cut NY Strip from Angus beef, wet-aged 21 days for peak tenderness. Cut 1.5–2 inches thick. Includes onion soup, garden salad, warm bread, and choice of side.', price: '$54', numPrice: 54, category: 'Steaks & Entrées', image: '/demos/bynums/menu items/ny-strip.webp' },
-  { id: 'stk-3', name: 'Filet Mignon', description: 'The most tender cut of beef. Standard or hearty.', detail: 'Premium filet mignon, the most tender cut of beef. Melt-in-your-mouth texture with delicate flavor. Available in standard ($48) or hearty ($54) portion. Includes onion soup, garden salad, warm bread, and choice of side.', price: '$48 / $54', numPrice: 48, category: 'Steaks & Entrées', tag: 'Premium', image: '/demos/bynums/menu items/filet.webp' },
-  { id: 'stk-5', name: 'Porterhouse', description: 'NY strip and filet combination — best of both worlds.', detail: 'The ultimate steak experience — a porterhouse gives you both the NY Strip and the filet in one cut. Includes onion soup, garden salad, warm bread, and choice of side.', price: '$61', numPrice: 61, category: 'Steaks & Entrées' },
-  { id: 'stk-6', name: 'Bone-In Ribeye', description: 'Well-marbled Angus beef, rich and flavorful.', detail: 'Beautifully marbled bone-in ribeye from Angus beef. Rich, beefy flavor with juicy tenderness. Wet-aged 21 days. Includes onion soup, garden salad, warm bread, and choice of side.', price: '$68', numPrice: 68, category: 'Steaks & Entrées', tag: 'Popular' },
-  { id: 'stk-7', name: 'Steak & Shrimp', description: '14oz NY strip with four breaded jumbo shrimp.', price: '$49', numPrice: 49, category: 'Steaks & Entrées' },
-  { id: 'stk-8', name: 'Sirloin for Two', description: 'Center cut sirloin, feeds 2 or more.', price: '$81', numPrice: 81, category: 'Steaks & Entrées' },
-  { id: 'stk-9', name: 'Sirloin', description: '8oz center cut sirloin.', price: '$40', numPrice: 40, category: 'Steaks & Entrées' },
-  { id: 'stk-10', name: 'Chopped Steak', description: 'Fresh ground filet, char-grilled to order.', price: '$30', numPrice: 30, category: 'Steaks & Entrées' },
-  { id: 'stk-11', name: 'Pork Chops', description: 'White Marble Farms premium pork chops.', price: '$41', numPrice: 41, category: 'Steaks & Entrées' },
-  { id: 'stk-12', name: "Bynum's BBQ Ribs", description: 'Full rack, slow roasted until fall-off-the-bone.', price: '$39', numPrice: 39, category: 'Steaks & Entrées', tag: 'Favorite' },
+  { id: 'stk-3', name: 'Filet Mignon', description: 'The most tender cut of beef. Standard or hearty.', detail: 'Premium filet mignon, the most tender cut of beef. Melt-in-your-mouth texture with delicate flavor. Available in standard or hearty portion. Includes onion soup, garden salad, warm bread, and choice of side.', price: '$48 / $54', category: 'Steaks & Entrées', tag: 'Premium', image: '/demos/bynums/menu items/filet.webp', variants: [{ label: 'Standard', price: 48 }, { label: 'Hearty', price: 54 }] },
+  { id: 'stk-5', name: 'Porterhouse', description: 'NY strip and filet combination — best of both worlds.', detail: 'The ultimate steak experience — a porterhouse gives you both the NY Strip and the filet in one cut. Includes onion soup, garden salad, warm bread, and choice of side.', price: '$61', numPrice: 61, category: 'Steaks & Entrées', image: '/demos/bynums/menu items/porterhouse.webp' },
+  { id: 'stk-6', name: 'Bone-In Ribeye', description: 'Well-marbled Angus beef, rich and flavorful.', detail: 'Beautifully marbled bone-in ribeye from Angus beef. Rich, beefy flavor with juicy tenderness. Wet-aged 21 days. Includes onion soup, garden salad, warm bread, and choice of side.', price: '$68', numPrice: 68, category: 'Steaks & Entrées', tag: 'Popular', image: '/demos/bynums/menu items/ribeye.webp' },
+  { id: 'stk-7', name: 'Steak & Shrimp', description: '14oz NY strip with four breaded jumbo shrimp.', price: '$49', numPrice: 49, category: 'Steaks & Entrées', image: '/demos/bynums/menu items/steak-and-shrimp.webp' },
+  { id: 'stk-8', name: 'Sirloin for Two', description: 'Center cut sirloin, feeds 2 or more.', price: '$81', numPrice: 81, category: 'Steaks & Entrées', image: '/demos/bynums/menu items/sirloin.webp' },
+  { id: 'stk-9', name: 'Sirloin', description: '8oz center cut sirloin.', price: '$40', numPrice: 40, category: 'Steaks & Entrées', image: '/demos/bynums/menu items/sirloin.webp' },
+  { id: 'stk-10', name: 'Chopped Steak', description: 'Fresh ground filet, char-grilled to order.', price: '$30', numPrice: 30, category: 'Steaks & Entrées', image: '/demos/bynums/menu items/chopped-steak.webp' },
+  { id: 'stk-11', name: 'Pork Chops', description: 'White Marble Farms premium pork chops.', price: '$41', numPrice: 41, category: 'Steaks & Entrées', image: '/demos/bynums/menu items/pork-chops.webp' },
+  { id: 'stk-12', name: "Bynum's BBQ Ribs", description: 'Full rack, slow roasted until fall-off-the-bone.', price: '$39', numPrice: 39, category: 'Steaks & Entrées', tag: 'Favorite', image: '/demos/bynums/menu items/ribs.webp' },
 
   // Seafood
-  { id: 'sea-1', name: 'Surf & Turf', description: '7oz filet paired with an 8oz lobster tail.', detail: 'The best of land and sea — a tender 7oz filet mignon alongside an 8oz cold water lobster tail with drawn butter. Includes onion soup, garden salad, warm bread, and choice of side.', price: 'Market', category: 'Seafood', tag: "Chef's Pick" },
-  { id: 'sea-2', name: 'Lobster Tail', description: 'Cold water lobster tail with drawn butter. 8oz to 24oz+.', price: 'Market', category: 'Seafood', tag: 'Popular' },
-  { id: 'sea-3', name: 'Parmesan Encrusted Tilapia', description: 'Bread crumbs and parmesan, golden brown.', price: '$33', numPrice: 33, category: 'Seafood' },
-  { id: 'sea-4', name: 'Breaded Shrimp', description: 'Eight jumbo shrimp fried golden brown.', price: '$30', numPrice: 30, category: 'Seafood' },
-  { id: 'sea-5', name: 'Blackened Grouper', description: '8oz filet with Cajun spices. Also available grilled or fried.', price: '$33', numPrice: 33, category: 'Seafood' },
+  { id: 'sea-1', name: 'Surf & Turf', description: '7oz filet paired with an 8oz lobster tail.', detail: 'The best of land and sea — a tender 7oz filet mignon alongside an 8oz cold water lobster tail with drawn butter. Includes onion soup, garden salad, warm bread, and choice of side.', price: 'Market', category: 'Seafood', tag: "Chef's Pick", image: '/demos/bynums/menu items/surf-and-turf.webp' },
+  { id: 'sea-2', name: 'Lobster Tail', description: 'Cold water lobster tail with drawn butter. 8oz to 24oz+.', price: 'Market', category: 'Seafood', tag: 'Popular', image: '/demos/bynums/menu items/lobster-tail.webp' },
+  { id: 'sea-3', name: 'Parmesan Encrusted Tilapia', description: 'Bread crumbs and parmesan, golden brown.', price: '$33', numPrice: 33, category: 'Seafood', image: '/demos/bynums/menu items/parm-tilapia.webp' },
+  { id: 'sea-4', name: 'Breaded Shrimp', description: 'Eight jumbo shrimp fried golden brown.', price: '$30', numPrice: 30, category: 'Seafood', image: '/demos/bynums/menu items/breaded-shrimp.webp' },
+  { id: 'sea-5', name: 'Blackened Grouper', description: '8oz filet with Cajun spices. Also available grilled or fried.', price: '$33', numPrice: 33, category: 'Seafood', image: '/demos/bynums/menu items/blackened-grouper.webp' },
 
   // Chicken
-  { id: 'chk-1', name: 'Chicken Parmesan', description: 'Breaded chicken breast over pasta with marinara sauce.', price: '$34', numPrice: 34, category: 'Chicken & Pasta' },
-  { id: 'chk-2', name: 'Roasted Chicken', description: 'Half chicken, slow-roasted with crispy golden skin.', price: '$35', numPrice: 35, category: 'Chicken & Pasta' },
-  { id: 'chk-3', name: 'Chicken Fettuccini Alfredo', description: 'Grilled chicken with fettuccini in parmesan cream sauce.', price: '$33', numPrice: 33, category: 'Chicken & Pasta' },
+  { id: 'chk-1', name: 'Chicken Parmesan', description: 'Breaded chicken breast over pasta with marinara sauce.', price: '$34', numPrice: 34, category: 'Chicken & Pasta', image: '/demos/bynums/menu items/chicken-parm.webp' },
+  { id: 'chk-2', name: 'Roasted Chicken', description: 'Half chicken, slow-roasted with crispy golden skin.', price: '$35', numPrice: 35, category: 'Chicken & Pasta', image: '/demos/bynums/menu items/roasted-chicken.webp' },
+  { id: 'chk-3', name: 'Chicken Fettuccini Alfredo', description: 'Grilled chicken with fettuccini in parmesan cream sauce.', price: '$33', numPrice: 33, category: 'Chicken & Pasta', image: '/demos/bynums/menu items/chicken-alfredo.webp' },
 
   // Lunch
   { id: 'lun-1', name: 'Blackened Prime Rib', description: 'Slow roasted, Cajun spiced.', price: '$25', numPrice: 25, category: 'Lunch' },
@@ -172,13 +178,15 @@ const MENU_ITEMS: MenuItem[] = [
 interface CartItem {
   item: MenuItem
   qty: number
+  variantLabel?: string
+  unitPrice: number
 }
 
 /* ── Checkout Steps ── */
 type Step = 'browse' | 'cart' | 'info' | 'confirm'
 
 /* ── Detail Modal ── */
-function DetailModal({ item, onClose, onAdd }: { item: MenuItem; onClose: () => void; onAdd: () => void }) {
+function DetailModal({ item, onClose, onAdd }: { item: MenuItem; onClose: () => void; onAdd: (variant?: MenuVariant) => void }) {
   return (
     <div className="fixed inset-0 z-[60] flex items-center justify-center p-4" onClick={onClose}>
       <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" />
@@ -219,15 +227,28 @@ function DetailModal({ item, onClose, onAdd }: { item: MenuItem; onClose: () => 
               </p>
             </div>
           )}
-          <div className="flex gap-3">
-            {item.numPrice && (
+          <div className="flex flex-col gap-3">
+            {item.variants && item.variants.length > 0 ? (
+              <div className="flex gap-2">
+                {item.variants.map(v => (
+                  <button
+                    key={v.label}
+                    onClick={() => { onAdd(v); onClose() }}
+                    className="flex-1 flex flex-col items-center gap-0.5 bg-bn-red text-white py-3 rounded-lg font-bold text-sm hover:bg-bn-red-dark transition-colors"
+                  >
+                    <span>{v.label}</span>
+                    <span className="text-white/70 text-xs font-normal">${v.price}</span>
+                  </button>
+                ))}
+              </div>
+            ) : item.numPrice ? (
               <button
                 onClick={() => { onAdd(); onClose() }}
-                className="flex-1 flex items-center justify-center gap-2 bg-bn-red text-white py-3 rounded-lg font-bold text-sm hover:bg-bn-red-dark transition-colors"
+                className="flex items-center justify-center gap-2 bg-bn-red text-white py-3 rounded-lg font-bold text-sm hover:bg-bn-red-dark transition-colors"
               >
                 <Plus className="w-4 h-4" /> Add to Order
               </button>
-            )}
+            ) : null}
             <button
               onClick={onClose}
               className="px-5 py-3 rounded-lg border border-bn-border text-bn-text-mid text-sm hover:bg-bn-bg transition-colors"
@@ -258,31 +279,38 @@ export default function MenuPage() {
   const [notes, setNotes] = useState('')
 
   const cartCount = cart.reduce((sum, c) => sum + c.qty, 0)
-  const cartTotal = cart.reduce((sum, c) => sum + (c.item.numPrice || 0) * c.qty, 0)
+  const cartTotal = cart.reduce((sum, c) => sum + c.unitPrice * c.qty, 0)
 
-  function addToCart(item: MenuItem) {
+  /* Cart key combines item id + variant for uniqueness */
+  function cartKey(id: string, variantLabel?: string) {
+    return variantLabel ? `${id}__${variantLabel}` : id
+  }
+
+  function addToCart(item: MenuItem, variant?: MenuVariant) {
+    const key = cartKey(item.id, variant?.label)
+    const price = variant?.price ?? item.numPrice ?? 0
     setCart(prev => {
-      const existing = prev.find(c => c.item.id === item.id)
-      if (existing) return prev.map(c => c.item.id === item.id ? { ...c, qty: c.qty + 1 } : c)
-      return [...prev, { item, qty: 1 }]
+      const existing = prev.find(c => cartKey(c.item.id, c.variantLabel) === key)
+      if (existing) return prev.map(c => cartKey(c.item.id, c.variantLabel) === key ? { ...c, qty: c.qty + 1 } : c)
+      return [...prev, { item, qty: 1, variantLabel: variant?.label, unitPrice: price }]
     })
     setExpandedId(null)
   }
 
-  function updateQty(id: string, delta: number) {
-    setCart(prev => prev.map(c => c.item.id === id ? { ...c, qty: c.qty + delta } : c).filter(c => c.qty > 0))
+  function updateQty(key: string, delta: number) {
+    setCart(prev => prev.map(c => cartKey(c.item.id, c.variantLabel) === key ? { ...c, qty: c.qty + delta } : c).filter(c => c.qty > 0))
   }
 
-  function removeFromCart(id: string) {
-    setCart(prev => prev.filter(c => c.item.id !== id))
+  function removeFromCart(key: string) {
+    setCart(prev => prev.filter(c => cartKey(c.item.id, c.variantLabel) !== key))
   }
 
   function getQty(id: string) {
-    return cart.find(c => c.item.id === id)?.qty || 0
+    return cart.filter(c => c.item.id === id).reduce((sum, c) => sum + c.qty, 0)
   }
 
   const filtered = MENU_ITEMS.filter(i => i.category === activeCategory)
-  const isOrderable = (item: MenuItem) => !!item.numPrice
+  const isOrderable = (item: MenuItem) => !!item.numPrice || (item.variants && item.variants.length > 0)
 
   /* ── Order Confirmed ── */
   if (orderPlaced) {
@@ -308,9 +336,9 @@ export default function MenuPage() {
             <div className="bg-white rounded-xl border border-bn-border p-6 mb-8 text-left">
               <h3 className="text-bn-red text-sm font-bold uppercase tracking-wider mb-4">Order Summary</h3>
               {cart.map(c => (
-                <div key={c.item.id} className="flex justify-between py-2 border-b border-bn-border/50 last:border-0">
-                  <span className="text-bn-text-mid text-sm">{c.qty}x {c.item.name}</span>
-                  <span className="text-bn-text text-sm font-medium">${((c.item.numPrice || 0) * c.qty).toFixed(2)}</span>
+                <div key={cartKey(c.item.id, c.variantLabel)} className="flex justify-between py-2 border-b border-bn-border/50 last:border-0">
+                  <span className="text-bn-text-mid text-sm">{c.qty}x {c.item.name}{c.variantLabel ? ` (${c.variantLabel})` : ''}</span>
+                  <span className="text-bn-text text-sm font-medium">${(c.unitPrice * c.qty).toFixed(2)}</span>
                 </div>
               ))}
               <div className="flex justify-between pt-3 mt-2 border-t border-bn-border">
@@ -423,31 +451,34 @@ export default function MenuPage() {
             ) : (
               <>
                 <div className="space-y-3">
-                  {cart.map(c => (
-                    <div key={c.item.id} className="flex items-center gap-4 bg-white rounded-xl border border-bn-border p-4">
+                  {cart.map(c => {
+                    const key = cartKey(c.item.id, c.variantLabel)
+                    return (
+                    <div key={key} className="flex items-center gap-4 bg-white rounded-xl border border-bn-border p-4">
                       <div className="flex-1 min-w-0">
-                        <h3 className="text-bn-text font-bold truncate">{c.item.name}</h3>
+                        <h3 className="text-bn-text font-bold truncate">{c.item.name}{c.variantLabel ? ` (${c.variantLabel})` : ''}</h3>
                         <p className="text-bn-text-light text-sm">{c.item.description}</p>
                       </div>
                       <div className="flex items-center gap-2 flex-shrink-0">
-                        <button onClick={() => updateQty(c.item.id, -1)}
+                        <button onClick={() => updateQty(key, -1)}
                           className="w-8 h-8 flex items-center justify-center rounded-lg border border-bn-border text-bn-text-mid hover:bg-bn-bg-alt transition-colors">
                           <Minus className="w-3.5 h-3.5" />
                         </button>
                         <span className="w-8 text-center text-bn-text font-bold">{c.qty}</span>
-                        <button onClick={() => updateQty(c.item.id, 1)}
+                        <button onClick={() => updateQty(key, 1)}
                           className="w-8 h-8 flex items-center justify-center rounded-lg border border-bn-border text-bn-text-mid hover:bg-bn-bg-alt transition-colors">
                           <Plus className="w-3.5 h-3.5" />
                         </button>
                       </div>
                       <span className="font-[var(--font-playfair)] text-bn-text text-lg font-bold w-20 text-right flex-shrink-0">
-                        ${((c.item.numPrice || 0) * c.qty).toFixed(2)}
+                        ${(c.unitPrice * c.qty).toFixed(2)}
                       </span>
-                      <button onClick={() => removeFromCart(c.item.id)} className="text-bn-text-light hover:text-bn-red transition-colors flex-shrink-0">
+                      <button onClick={() => removeFromCart(key)} className="text-bn-text-light hover:text-bn-red transition-colors flex-shrink-0">
                         <X className="w-4 h-4" />
                       </button>
                     </div>
-                  ))}
+                    )
+                  })}
                 </div>
                 <div className="bg-white rounded-xl border border-bn-border p-5 mt-6">
                   <div className="flex justify-between items-center mb-4">
@@ -478,7 +509,7 @@ export default function MenuPage() {
         <DetailModal
           item={detailItem}
           onClose={() => setDetailItem(null)}
-          onAdd={() => addToCart(detailItem)}
+          onAdd={(variant) => addToCart(detailItem, variant)}
         />
       )}
 
@@ -592,22 +623,23 @@ export default function MenuPage() {
                         {orderable ? 'View Details or Order' : 'View Details'}
                       </button>
                     ) : (
-                      <div className="flex gap-2">
-                        <button
-                          onClick={() => { setDetailItem(item); setExpandedId(null) }}
-                          className="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-lg border border-bn-border text-bn-text-mid text-xs font-bold hover:bg-bn-bg transition-colors"
-                        >
-                          <Info className="w-3.5 h-3.5" /> Details
-                        </button>
-                        {orderable ? (
-                          qty === 0 ? (
+                      <div className="flex flex-col gap-2">
+                        <div className="flex gap-2">
+                          <button
+                            onClick={() => { setDetailItem(item); setExpandedId(null) }}
+                            className="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-lg border border-bn-border text-bn-text-mid text-xs font-bold hover:bg-bn-bg transition-colors"
+                          >
+                            <Info className="w-3.5 h-3.5" /> Details
+                          </button>
+                          {!item.variants && orderable && qty === 0 && (
                             <button
                               onClick={() => addToCart(item)}
                               className="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-lg bg-bn-red text-white text-xs font-bold hover:bg-bn-red-dark transition-colors"
                             >
                               <Plus className="w-3.5 h-3.5" /> Add to Order
                             </button>
-                          ) : (
+                          )}
+                          {!item.variants && orderable && qty > 0 && (
                             <div className="flex-1 flex items-center justify-center gap-2 py-1">
                               <button onClick={() => updateQty(item.id, -1)}
                                 className="w-8 h-8 flex items-center justify-center rounded-lg border border-bn-border text-bn-text-mid hover:bg-bn-bg-alt transition-colors">
@@ -619,10 +651,25 @@ export default function MenuPage() {
                                 <Plus className="w-3.5 h-3.5" />
                               </button>
                             </div>
-                          )
-                        ) : (
-                          <div className="flex-1 flex items-center justify-center text-bn-text-light text-xs">
-                            Dine-in only
+                          )}
+                          {!orderable && (
+                            <div className="flex-1 flex items-center justify-center text-bn-text-light text-xs">
+                              Dine-in only
+                            </div>
+                          )}
+                        </div>
+                        {/* Variant selection */}
+                        {item.variants && item.variants.length > 0 && (
+                          <div className="flex gap-2">
+                            {item.variants.map(v => (
+                              <button
+                                key={v.label}
+                                onClick={() => addToCart(item, v)}
+                                className="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-lg bg-bn-red text-white text-xs font-bold hover:bg-bn-red-dark transition-colors"
+                              >
+                                <Plus className="w-3 h-3" /> {v.label} — ${v.price}
+                              </button>
+                            ))}
                           </div>
                         )}
                       </div>
