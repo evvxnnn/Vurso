@@ -1,12 +1,11 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Menu, X } from 'lucide-react'
+import { Menu, X, Phone } from 'lucide-react'
 
 const links = [
   { href: '/demos/bynums', label: 'Home' },
-  { href: '/demos/bynums/menu', label: 'Menu' },
-  { href: '/demos/bynums/order', label: 'Order Online' },
+  { href: '/demos/bynums/menu', label: 'Menu & Order' },
 ]
 
 export default function Nav() {
@@ -23,16 +22,23 @@ export default function Nav() {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-bn-dark/95 backdrop-blur-sm shadow-lg shadow-black/20'
+          ? 'bg-white/95 backdrop-blur-sm shadow-sm'
           : 'bg-transparent'
       }`}
     >
       <div className="section-container flex items-center justify-between h-16 sm:h-20">
-        <a href="/demos/bynums" className="flex-shrink-0" onClick={() => setMenuOpen(false)}>
-          <span className="font-[var(--font-playfair)] text-xl sm:text-2xl tracking-wide">
-            <span className="text-bn-gold">BYNUM&apos;S</span>
-            <span className="text-bn-cream/60 font-light ml-2 text-sm sm:text-base tracking-[0.2em] uppercase">Steakhouse</span>
-          </span>
+        {/* Logo */}
+        <a href="/demos/bynums" className="flex items-center gap-3 flex-shrink-0" onClick={() => setMenuOpen(false)}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/demos/bynums/logo.png"
+            alt="Bynum's Steakhouse"
+            className="h-10 sm:h-12 w-auto"
+          />
+          <div className="hidden sm:block leading-tight">
+            <span className="font-[var(--font-playfair)] text-lg text-bn-text font-bold block">Bynum&apos;s</span>
+            <span className="text-bn-text-mid text-[11px] tracking-[0.15em] uppercase">Steakhouse</span>
+          </div>
         </a>
 
         {/* Desktop links */}
@@ -41,23 +47,24 @@ export default function Nav() {
             <a
               key={link.href}
               href={link.href}
-              className="text-bn-cream/60 hover:text-bn-gold transition-colors text-sm tracking-wider uppercase"
+              className="text-bn-text-mid hover:text-bn-red transition-colors text-sm font-medium"
             >
               {link.label}
             </a>
           ))}
           <a
             href="tel:317-784-9880"
-            className="border border-bn-gold/40 text-bn-gold px-5 py-2 text-sm tracking-wider uppercase hover:bg-bn-gold hover:text-bn-dark transition-all"
+            className="flex items-center gap-2 bg-bn-red text-white px-5 py-2 rounded-lg text-sm font-bold hover:bg-bn-red-dark transition-colors"
           >
-            Call Now
+            <Phone className="w-3.5 h-3.5" />
+            (317) 784-9880
           </a>
         </div>
 
         {/* Mobile toggle */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="md:hidden p-2 text-bn-cream/70 hover:text-bn-gold transition-colors"
+          className="md:hidden p-2 text-bn-text-mid hover:text-bn-red transition-colors"
           aria-label="Toggle menu"
         >
           {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -66,14 +73,14 @@ export default function Nav() {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="md:hidden bg-bn-dark/98 backdrop-blur-sm border-t border-bn-gold/10">
+        <div className="md:hidden bg-white/98 backdrop-blur-sm border-t border-bn-border">
           <div className="section-container py-4 flex flex-col gap-3">
             {links.map(link => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
-                className="text-bn-cream/60 hover:text-bn-gold transition-colors py-2 text-base tracking-wider uppercase"
+                className="text-bn-text-mid hover:text-bn-red transition-colors py-2 text-base font-medium"
               >
                 {link.label}
               </a>
@@ -81,9 +88,10 @@ export default function Nav() {
             <a
               href="tel:317-784-9880"
               onClick={() => setMenuOpen(false)}
-              className="border border-bn-gold/40 text-bn-gold px-5 py-2.5 text-center text-sm tracking-wider uppercase hover:bg-bn-gold hover:text-bn-dark transition-all mt-1"
+              className="flex items-center justify-center gap-2 bg-bn-red text-white px-5 py-2.5 rounded-lg text-sm font-bold hover:bg-bn-red-dark transition-colors mt-1"
             >
-              Call Now
+              <Phone className="w-3.5 h-3.5" />
+              (317) 784-9880
             </a>
           </div>
         </div>

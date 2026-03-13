@@ -27,16 +27,23 @@ const config: Config = {
         cream: '#fffaf9',
         gold: '#c9a96e',
         // Bynums demo colors
+        'bn-bg': '#faf6f1',
+        'bn-bg-alt': '#f0ebe4',
+        'bn-text': '#2c1810',
+        'bn-text-mid': '#6b5544',
+        'bn-text-light': '#9a8a7a',
+        'bn-red': {
+          DEFAULT: '#c41e2a',
+          dark: '#a01820',
+          light: '#e8545d',
+        },
         'bn-gold': {
           DEFAULT: '#b9a65c',
           dark: '#9a8340',
           light: '#d4c48a',
         },
-        'bn-black': '#1a1a1a',
-        'bn-dark': '#111111',
-        'bn-maroon': '#8b2635',
-        'bn-cream': '#f5f0e8',
-        'bn-warm': '#2a2018',
+        'bn-card': '#ffffff',
+        'bn-border': '#e5ded4',
       },
       fontFamily: {
         sans: ['var(--font-geist)', 'system-ui', 'sans-serif'],

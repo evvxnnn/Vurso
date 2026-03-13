@@ -26,11 +26,10 @@ export default function BynumsLayout({
   return (
     <div className={`${playfair.variable} ${lato.variable} bynums-demo`}>
       <style>{`
-        /* Bynums Demo Scoped Styles */
         .bynums-demo {
           font-family: var(--font-lato), system-ui, sans-serif;
-          color: #f5f0e8;
-          background: #111111;
+          color: #2c1810;
+          background: #faf6f1;
         }
 
         .bynums-demo .section-container {
@@ -53,7 +52,6 @@ export default function BynumsLayout({
           }
         }
 
-        /* Scroll-triggered animations */
         .bynums-demo .animate-on-scroll {
           opacity: 0;
           will-change: opacity, transform;
@@ -63,41 +61,17 @@ export default function BynumsLayout({
           opacity: 1;
           transform: none;
         }
-        .bynums-demo .animate-fade-up { transform: translateY(28px); }
+        .bynums-demo .animate-fade-up { transform: translateY(24px); }
 
-        /* Mount animations */
         @keyframes bnFadeUp {
-          from { opacity: 0; transform: translateY(30px); }
+          from { opacity: 0; transform: translateY(24px); }
           to { opacity: 1; transform: none; }
         }
-        @keyframes bnFadeIn {
-          from { opacity: 0; }
-          to { opacity: 1; }
-        }
-        .bynums-demo .anim-fade-up { animation: bnFadeUp 0.8s ease both; }
-        .bynums-demo .anim-fade-in { animation: bnFadeIn 1s ease both; }
-
+        .bynums-demo .anim-fade-up { animation: bnFadeUp 0.7s ease both; }
         .bynums-demo .delay-100 { animation-delay: 100ms; }
         .bynums-demo .delay-200 { animation-delay: 200ms; }
         .bynums-demo .delay-300 { animation-delay: 300ms; }
         .bynums-demo .delay-400 { animation-delay: 400ms; }
-        .bynums-demo .delay-500 { animation-delay: 500ms; }
-
-        /* Gold gradient text */
-        .bynums-demo .text-gold-gradient {
-          background: linear-gradient(135deg, #d4c48a 0%, #b9a65c 50%, #9a8340 100%);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-        }
-
-        /* Divider */
-        .bynums-demo .gold-divider {
-          width: 60px;
-          height: 2px;
-          background: linear-gradient(90deg, transparent, #b9a65c, transparent);
-          margin: 0 auto;
-        }
       `}</style>
       {children}
     </div>
