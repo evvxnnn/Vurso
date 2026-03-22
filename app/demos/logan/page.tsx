@@ -1,7 +1,7 @@
 export default function LoganDemo() {
   return (
     <iframe
-      src="https://claude.site/public/artifacts/ba4fb074-9b23-40f5-84f3-ebf886450f2e/embed"
+      src="https://claude.site/public/artifacts/2996a948-0372-40d9-9187-272d3b418b98/embed"
       title="Logan Demo"
       style={{
         position: 'fixed',
